@@ -28,12 +28,68 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            btnRefill = new Button();
+            btnGet = new Button();
+            txtInfo = new RichTextBox();
+            txtOut = new RichTextBox();
+            SuspendLayout();
+            // 
+            // btnRefill
+            // 
+            btnRefill.Location = new Point(45, 32);
+            btnRefill.Name = "btnRefill";
+            btnRefill.Size = new Size(299, 29);
+            btnRefill.TabIndex = 0;
+            btnRefill.Text = "Перезаполнить";
+            btnRefill.UseVisualStyleBackColor = true;
+            btnRefill.Click += btnRefill_Click;
+            // 
+            // btnGet
+            // 
+            btnGet.Location = new Point(250, 140);
+            btnGet.Name = "btnGet";
+            btnGet.Size = new Size(94, 146);
+            btnGet.TabIndex = 1;
+            btnGet.Text = "Взять";
+            btnGet.UseVisualStyleBackColor = true;
+            // 
+            // txtInfo
+            // 
+            txtInfo.BorderStyle = BorderStyle.None;
+            txtInfo.Location = new Point(45, 67);
+            txtInfo.Name = "txtInfo";
+            txtInfo.ReadOnly = true;
+            txtInfo.Size = new Size(299, 67);
+            txtInfo.TabIndex = 2;
+            txtInfo.Text = "";
+            // 
+            // txtOut
+            // 
+            txtOut.Location = new Point(45, 140);
+            txtOut.Name = "txtOut";
+            txtOut.Size = new Size(199, 146);
+            txtOut.TabIndex = 3;
+            txtOut.Text = "";
+            // 
+            // Form1
+            // 
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(377, 309);
+            Controls.Add(txtOut);
+            Controls.Add(txtInfo);
+            Controls.Add(btnGet);
+            Controls.Add(btnRefill);
+            Name = "Form1";
+            Text = "Form1";
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private Button btnRefill;
+        private Button btnGet;
+        private RichTextBox txtInfo;
+        private RichTextBox txtOut;
     }
 }
