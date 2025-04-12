@@ -9,11 +9,14 @@ namespace FourthLaba
 {
     public class Fruit
     {
+        public static Random rnd = new Random();
+
         public int Ripeness = 0;
         // добавил метод
         public virtual String GetInfo()
         {
-            return "Я фрукт";
+            var str = String.Format("\nСпелость: {0}", this.Ripeness);
+            return str;
         }
     }
 
@@ -27,8 +30,20 @@ namespace FourthLaba
         public override String GetInfo()
         {
             var str = "Я мандарин";
-            str += String.Format("\nСпелость{0}", this.Ripeness);
+            str += base.GetInfo();
+            str += String.Format("\nКоличество долек: {0}", this.SliceCount);
+            str += String.Format("\nНаличие листика: {0}", this.WithLeaf);
             return str;
+        }
+
+        public static Mandarin Generate()
+        {
+            return new Mandarin
+            {
+                Ripeness = rnd.Next() % 100, // спелость от 0 до 100
+                SliceCount = 5 + rnd.Next() % 20, // количество долек от 5 до 25
+                WithLeaf = rnd.Next() % 2 == 0 // наличие листика true или false
+            };
         }
     }
 
@@ -45,8 +60,20 @@ namespace FourthLaba
         public override String GetInfo()
         {
             var str = "Я Виноград";
-            str += String.Format("\nСпелость{0}", this.Ripeness);
+            str += base.GetInfo();
+            str += String.Format("\nКоличество ягод: {0}", this.BerriesNumber);
+            str += String.Format("\nТип: {0}", this.type);
             return str;
+        }
+
+        public static Grapes Generate()
+        {
+            return new Grapes
+            {
+                Ripeness = rnd.Next() % 100, // спелость от 0 до 100
+                BerriesNumber = 25 + rnd.Next() % 75, // количество ягод от 25 до 100
+                type = (GrapesType)rnd.Next(2) // тип винограда
+            };
         }
     }
 
@@ -61,8 +88,20 @@ namespace FourthLaba
         public override String GetInfo()
         {
             var str = "Я Арбуз";
-            str += String.Format("\nСпелость{0}", this.Ripeness);
+            str += base.GetInfo();
+            str += String.Format("\nКоличество косточек: {0}", this.BonesNumber);
+            str += String.Format("\nНаличие полосок: {0}", this.HasStripes);
             return str;
+        }
+
+        public static Watermelon Generate()
+        {
+            return new Watermelon
+            {
+                Ripeness = rnd.Next() % 100, // спелость от 0 до 100
+                BonesNumber = 250 + rnd.Next(250), // количество ягод от 250 до 500
+                HasStripes = rnd.Next(2) == 0 // начличие полосок
+            };
         }
     }
 }

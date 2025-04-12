@@ -20,22 +20,13 @@ namespace FourthLaba
                 switch (rnd.Next() % 3) // генерирую случайное число от 0 до 2 (ну остаток от деления на 3)
                 {
                     case 0: // если 0, то мандарин
-                        this.fruitsList.Add(new Mandarin
-                        {
-                            Ripeness = rnd.Next() % 101
-                        });
+                        this.fruitsList.Add(Mandarin.Generate());
                         break;
                     case 1: // если 1 то виноград
-                        this.fruitsList.Add(new Grapes
-                        {
-                            Ripeness = rnd.Next() % 101
-                        });
+                        this.fruitsList.Add(Grapes.Generate());
                         break;
                     case 2: // если 2 то арбуз
-                        this.fruitsList.Add(new Watermelon
-                        {
-                            Ripeness = rnd.Next() % 101
-                        });
+                        this.fruitsList.Add(Watermelon.Generate());
                         break;
                         // появление других чисел маловероятно
                 }
