@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace FourthLaba
 {
-    public enum ProductionTitle { Wolverine, PussInBoots, Transformers }; //Временное решение
+    public enum ProductionTitle { Wolverine, PussInBoots, Transformers, Kitchen, DemonSlayer, KorolIShut, ComedyClub, Minut60, GoodNightChildren }; //Временное решение
+    public enum MovieTiming { hour2, hour1minut30, hour2minut10 }; //Временное решение
     public class Production
     {
         public static Random rnd = new Random();
@@ -22,7 +23,7 @@ namespace FourthLaba
 
     public class Movie : Production
     {
-        public string Timing = "0"; // Хронометраж
+        public MovieTiming Timing = MovieTiming.hour2; // Хронометраж
         public int AwardCount = 0; // Количество наград
 
         public override String GetInfo()
@@ -36,69 +37,68 @@ namespace FourthLaba
 
         public static Movie Generate()
         {
+            int chose = rnd.Next(3);
             return new Movie
             {
-                Title = (ProductionTitle)rnd.Next(3), // спелость от 0 до 100
-                Timing = "1:30 ч", // количество долек от 5 до 25
+                Title = (ProductionTitle)chose, // спелость от 0 до 100
+                Timing = (MovieTiming)chose, // количество долек от 5 до 25
                 AwardCount = rnd.Next() % 10  // Кол-во наград
             };
         }
     }
 
-    // виды винограда
-    public enum GrapesType { black, green };
-    // собственно сам виноград
-    public class Grapes : Production
+    public class Series : Production
     {
-        //public int Ripeness = 0;
-        public int BerriesNumber = 0; // количество ягод
-        public GrapesType type = GrapesType.black; // тип
+        public int EpisodeCount = 0; // количество серий
+        public int SeasonCount = 0; // кол-во сезонов
 
-        // ДОБАВИЛ ПЕРЕОПРЕДЛЕНИЕ
         public override String GetInfo()
         {
-            var str = "Я Виноград";
+            var str = "Я Сериал";
             str += base.GetInfo();
-            str += String.Format("\nКоличество ягод: {0}", this.BerriesNumber);
-            str += String.Format("\nТип: {0}", this.type);
+            str += String.Format("\nКоличество серий: {0}", this.EpisodeCount);
+            str += String.Format("\nКоличество сезонов: {0}", this.SeasonCount);
             return str;
         }
 
-        public static Grapes Generate()
+        public static Series Generate()
         {
-            return new Grapes
+            int chose = rnd.Next(3);
+            return new Series
             {
-                Title = (ProductionTitle)rnd.Next(3), // спелость от 0 до 100
-                BerriesNumber = 25 + rnd.Next() % 75, // количество ягод от 25 до 100
-                type = (GrapesType)rnd.Next(2) // тип винограда
+                Title = (ProductionTitle)chose + 3, // спелость от 0 до 100
+                EpisodeCount = 8 + rnd.Next() % 120, // количество ягод от 25 до 100
+                SeasonCount = 1 + rnd.Next() % 6 // тип винограда
             };
         }
     }
 
-    // Арбуз
-    public class Watermelon : Production
-    {
-        //public int Ripeness = 0;
-        public int BonesNumber = 0; // количество косточек
-        public bool HasStripes = false; // полосатость арбуза
+    public enum TVShowTiming { hour1, hour1minut10, minut20 }; //Временное решение
+    public enum TVShowTime { FR2100, Budni2000, Budni2045 }; //Временное решение
 
-        // ДОБАВИЛ ПЕРЕОПРЕДЛЕНИЕ
+    // Арбуз
+    public class TVShow : Production
+    {
+        public TVShowTiming TimeCount = TVShowTiming.hour1; // продолжительность
+        public TVShowTime Time = TVShowTime.FR2100; // эфирное время
+
         public override String GetInfo()
         {
-            var str = "Я Арбуз";
+            var str = "Я Телепередача";
             str += base.GetInfo();
-            str += String.Format("\nКоличество косточек: {0}", this.BonesNumber);
-            str += String.Format("\nНаличие полосок: {0}", this.HasStripes);
+            str += String.Format("\nПродолжительность: {0}", this.TimeCount);
+            str += String.Format("\nЭфирное время: {0}", this.Time);
             return str;
         }
 
-        public static Watermelon Generate()
+        public static TVShow Generate()
         {
-            return new Watermelon
+            int chose = rnd.Next(3);
+            return new TVShow
             {
-                Title = (ProductionTitle)rnd.Next(3), // спелость от 0 до 100
-                BonesNumber = 250 + rnd.Next(250), // количество ягод от 250 до 500
-                HasStripes = rnd.Next(2) == 0 // начличие полосок
+                Title = (ProductionTitle)chose + 6, // спелость от 0 до 100
+                TimeCount = (TVShowTiming)chose, // количество ягод от 250 до 500
+                Time = (TVShowTime)chose // начличие полосок
             };
         }
     }

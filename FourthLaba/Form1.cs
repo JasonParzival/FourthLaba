@@ -23,10 +23,10 @@ namespace FourthLaba
                         this.fruitsList.Add(Movie.Generate());
                         break;
                     case 1: // если 1 то виноград
-                        this.fruitsList.Add(Grapes.Generate());
+                        this.fruitsList.Add(Series.Generate());
                         break;
                     case 2: // если 2 то арбуз
-                        this.fruitsList.Add(Watermelon.Generate());
+                        this.fruitsList.Add(TVShow.Generate());
                         break;
                         // появление других чисел маловероятно
                 }
@@ -53,18 +53,18 @@ namespace FourthLaba
                 {
                     mandarinsCount += 1;
                 }
-                else if (fruit is Grapes)
+                else if (fruit is Series)
                 {
                     grapesCount += 1;
                 }
-                else if (fruit is Watermelon)
+                else if (fruit is TVShow)
                 {
                     watermellonsCount += 1;
                 }
             }
 
             // а ну и вывести все это надо на форму
-            txtInfo.Text = "Мндрн\tВнгрд\tАрбуз"; // буквы экнмлю, чтобы влезло на форму
+            txtInfo.Text = "Фильм\tСериал\tТелепередача"; // буквы экнмлю, чтобы влезло на форму
             txtInfo.Text += "\n";
             txtInfo.Text += String.Format("{0}\t{1}\t{2}", mandarinsCount, grapesCount, watermellonsCount);
         }
