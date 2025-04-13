@@ -3,7 +3,7 @@ namespace FourthLaba
     public partial class Form1 : Form
     {
         // ДОБАВИЛ, важный момент что указываем тип Fruit
-        List<Fruit> fruitsList = new List<Fruit>();
+        List<Production> fruitsList = new List<Production>();
 
         public Form1()
         {
@@ -20,7 +20,7 @@ namespace FourthLaba
                 switch (rnd.Next() % 3) // генерирую случайное число от 0 до 2 (ну остаток от деления на 3)
                 {
                     case 0: // если 0, то мандарин
-                        this.fruitsList.Add(Mandarin.Generate());
+                        this.fruitsList.Add(Movie.Generate());
                         break;
                     case 1: // если 1 то виноград
                         this.fruitsList.Add(Grapes.Generate());
@@ -49,7 +49,7 @@ namespace FourthLaba
                 // то есть объекты типа Fruit
                 // поэтому чтобы проверить какой именно фрукт
                 // мы в данный момент обозреваем, мы используем ключевое слово is
-                if (fruit is Mandarin) // читается почти как чистый инглиш, "если fruit есть Мандарин"
+                if (fruit is Movie) // читается почти как чистый инглиш, "если fruit есть Мандарин"
                 {
                     mandarinsCount += 1;
                 }

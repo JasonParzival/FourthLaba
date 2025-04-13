@@ -4,45 +4,43 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-// БУДТЕ ВНИМАТЕЛЬНЕЕ: ТУТ ДОЛЖЕН СТОЯТЬ ТОТ ЖЕ namespace что и в Program.cs
 namespace FourthLaba
 {
-    public class Fruit
+    public enum ProductionTitle { Wolverine, PussInBoots, Transformers }; //Временное решение
+    public class Production
     {
         public static Random rnd = new Random();
 
-        public int Ripeness = 0;
-        // добавил метод
+        public ProductionTitle Title = ProductionTitle.Wolverine;
+
         public virtual String GetInfo()
         {
-            var str = String.Format("\nСпелость: {0}", this.Ripeness);
+            var str = String.Format("\nНазвание: {0}", this.Title);
             return str;
         }
     }
 
-    public class Mandarin : Fruit
+    public class Movie : Production
     {
-        //public int Ripeness = 0; // спелость
-        public int SliceCount = 0; // количество долек
-        public bool WithLeaf = false; // наличие листика
+        public string Timing = "0"; // Хронометраж
+        public int AwardCount = 0; // Количество наград
 
-        // А ТУТ ПЕРЕОПРЕДЕЛИЛ МЕТОД
         public override String GetInfo()
         {
-            var str = "Я мандарин";
+            var str = "Я фильм";
             str += base.GetInfo();
-            str += String.Format("\nКоличество долек: {0}", this.SliceCount);
-            str += String.Format("\nНаличие листика: {0}", this.WithLeaf);
+            str += String.Format("\nХронометраж: {0}", this.Timing);
+            str += String.Format("\nКоличество наград: {0}", this.AwardCount);
             return str;
         }
 
-        public static Mandarin Generate()
+        public static Movie Generate()
         {
-            return new Mandarin
+            return new Movie
             {
-                Ripeness = rnd.Next() % 100, // спелость от 0 до 100
-                SliceCount = 5 + rnd.Next() % 20, // количество долек от 5 до 25
-                WithLeaf = rnd.Next() % 2 == 0 // наличие листика true или false
+                Title = (ProductionTitle)rnd.Next(3), // спелость от 0 до 100
+                Timing = "1:30 ч", // количество долек от 5 до 25
+                AwardCount = rnd.Next() % 10  // Кол-во наград
             };
         }
     }
@@ -50,7 +48,7 @@ namespace FourthLaba
     // виды винограда
     public enum GrapesType { black, green };
     // собственно сам виноград
-    public class Grapes : Fruit
+    public class Grapes : Production
     {
         //public int Ripeness = 0;
         public int BerriesNumber = 0; // количество ягод
@@ -70,7 +68,7 @@ namespace FourthLaba
         {
             return new Grapes
             {
-                Ripeness = rnd.Next() % 100, // спелость от 0 до 100
+                Title = (ProductionTitle)rnd.Next(3), // спелость от 0 до 100
                 BerriesNumber = 25 + rnd.Next() % 75, // количество ягод от 25 до 100
                 type = (GrapesType)rnd.Next(2) // тип винограда
             };
@@ -78,7 +76,7 @@ namespace FourthLaba
     }
 
     // Арбуз
-    public class Watermelon : Fruit
+    public class Watermelon : Production
     {
         //public int Ripeness = 0;
         public int BonesNumber = 0; // количество косточек
@@ -98,7 +96,7 @@ namespace FourthLaba
         {
             return new Watermelon
             {
-                Ripeness = rnd.Next() % 100, // спелость от 0 до 100
+                Title = (ProductionTitle)rnd.Next(3), // спелость от 0 до 100
                 BonesNumber = 250 + rnd.Next(250), // количество ягод от 250 до 500
                 HasStripes = rnd.Next(2) == 0 // начличие полосок
             };
