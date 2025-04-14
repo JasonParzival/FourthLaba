@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace FourthLaba
 {
-    public enum ProductionTitle { Wolverine, PussInBoots, Transformers, Kitchen, DemonSlayer, KorolIShut, ComedyClub, Minut60, GoodNightChildren }; //Временное решение
+    public enum ProductionTitle { 
+        Wolverine, PussInBoots, Transformers, 
+        Kitchen, DemonSlayer, KorolIShut, 
+        ComedyClub, Minut60, GoodNightChildren 
+    }; //Временное решение
     public enum MovieTiming { hour2, hour1minut30, hour2minut10 }; //Временное решение
     public class Production
     {
@@ -21,10 +25,37 @@ namespace FourthLaba
         }
     }
 
+    /*
+     public string Verbose()
+        {
+            string typeVerbose = "";
+            switch (this.type)
+            {
+                case MeasureType.bi:
+                    typeVerbose = "(2)";
+                    break;
+                case MeasureType.oc:
+                    typeVerbose = "(8)";
+                    break;
+                case MeasureType.de:
+                    typeVerbose = "(10)";
+                    break;
+                case MeasureType.he:
+                    typeVerbose = "(16)";
+                    break;
+            }
+            return this.value + typeVerbose;
+        }
+     */
+
     public class Movie : Production
     {
         public MovieTiming Timing = MovieTiming.hour2; // Хронометраж
         public int AwardCount = 0; // Количество наград
+        public static int[] AwardCounts =
+        {
+            5, 2, 4
+        };
 
         public override String GetInfo()
         {
@@ -40,9 +71,9 @@ namespace FourthLaba
             int chose = rnd.Next(3);
             return new Movie
             {
-                Title = (ProductionTitle)chose, // спелость от 0 до 100
-                Timing = (MovieTiming)chose, // количество долек от 5 до 25
-                AwardCount = rnd.Next() % 10  // Кол-во наград
+                Title = (ProductionTitle)chose, 
+                Timing = (MovieTiming)chose,
+                AwardCount = AwardCounts[chose]
             };
         }
     }
@@ -51,6 +82,14 @@ namespace FourthLaba
     {
         public int EpisodeCount = 0; // количество серий
         public int SeasonCount = 0; // кол-во сезонов
+        public static int[] EpisodeCounts =
+        {
+            120, 63, 8
+        };
+        public static int[] SeasonCounts =
+        {
+            6, 5, 1
+        };
 
         public override String GetInfo()
         {
@@ -66,9 +105,9 @@ namespace FourthLaba
             int chose = rnd.Next(3);
             return new Series
             {
-                Title = (ProductionTitle)chose + 3, // спелость от 0 до 100
-                EpisodeCount = 8 + rnd.Next() % 120, // количество ягод от 25 до 100
-                SeasonCount = 1 + rnd.Next() % 6 // тип винограда
+                Title = (ProductionTitle)chose + 3, 
+                EpisodeCount = EpisodeCounts[chose],
+                SeasonCount = SeasonCounts[chose]
             };
         }
     }
@@ -96,9 +135,9 @@ namespace FourthLaba
             int chose = rnd.Next(3);
             return new TVShow
             {
-                Title = (ProductionTitle)chose + 6, // спелость от 0 до 100
-                TimeCount = (TVShowTiming)chose, // количество ягод от 250 до 500
-                Time = (TVShowTime)chose // начличие полосок
+                Title = (ProductionTitle)chose + 6, 
+                TimeCount = (TVShowTiming)chose, 
+                Time = (TVShowTime)chose 
             };
         }
     }
