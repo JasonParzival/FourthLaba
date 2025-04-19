@@ -33,6 +33,8 @@
             txtInfo = new RichTextBox();
             txtOut = new RichTextBox();
             txtTurnLine = new RichTextBox();
+            pictureBox = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBox).BeginInit();
             SuspendLayout();
             // 
             // btnRefill
@@ -75,24 +77,35 @@
             // 
             // txtTurnLine
             // 
-            txtTurnLine.Location = new Point(364, 32);
+            txtTurnLine.Location = new Point(378, 33);
             txtTurnLine.Name = "txtTurnLine";
-            txtTurnLine.Size = new Size(279, 254);
+            txtTurnLine.Size = new Size(204, 259);
             txtTurnLine.TabIndex = 4;
             txtTurnLine.Text = "";
+            // 
+            // pictureBox
+            // 
+            pictureBox.Location = new Point(45, 298);
+            pictureBox.Name = "pictureBox";
+            pictureBox.Size = new Size(537, 295);
+            pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox.TabIndex = 5;
+            pictureBox.TabStop = false;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(655, 309);
+            ClientSize = new Size(597, 616);
+            Controls.Add(pictureBox);
             Controls.Add(txtTurnLine);
             Controls.Add(txtOut);
             Controls.Add(txtInfo);
             Controls.Add(btnGet);
             Controls.Add(btnRefill);
             Name = "Form1";
-            Text = "Form1";
+            Text = "Лаб. работа №4, вариант 10";
+            ((System.ComponentModel.ISupportInitialize)pictureBox).EndInit();
             ResumeLayout(false);
         }
 
@@ -103,5 +116,6 @@
         private RichTextBox txtInfo;
         private RichTextBox txtOut;
         private RichTextBox txtTurnLine;
+        private PictureBox pictureBox;
     }
 }

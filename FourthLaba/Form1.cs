@@ -1,8 +1,32 @@
+using System.Windows.Forms;
+
 namespace FourthLaba
 {
+    //ѕридумать иерархию классов.
+    //1. ƒолжен быть 1 базовый класс, и 3 класса наследника.” базового класса должно быть,
+    //как минимум одно свойство передающиес€ по наследству остальным, у каждого из классов
+    //наследников должно быть как минимум два уникальных свойства.
+    //2. –еализовать эмул€тор торгового автомата по образу и подобию как описано тут
+    //3. ≈сли вы обычно делаете желтые задачки, то в эмул€торе надо реализовать отображение
+    //состо€ни€ очереди (чтобы было видно какие объекты в каком пор€дке сейчас наход€тс€ в автомате)
+    //4. ≈сли чувствуете склонность к красным, добавьте картинки дл€ каждого типа объектов,
+    //которые будут видны при выводе очереди
+
+    //ƒл€ раздачи кино (рейтинг)
+    // * ‘ильм(хронометраж, количество наград, тип (художественный, документальный и т.п.))
+    // * —ериал(общее количество серий, количество сезонов)
+    // * “елепередача(продолжительность, эфирное врем€)
+
     public partial class Form1 : Form
     {
         List<Production> kinoList = new List<Production>();
+
+        Image[] images = new Image[]
+        {
+            Image.FromFile("images/Movie.jpg"),
+            Image.FromFile("images/Series.jpg"),
+            Image.FromFile("images/TVShow.png")
+        };
 
         public Form1()
         {
@@ -106,6 +130,19 @@ namespace FourthLaba
             }
 
             var kinoListik = this.kinoList[0];
+
+            if (kinoListik is Movie)
+            {
+                pictureBox.Image = images[0];
+            }
+            else if (kinoListik is Series)
+            {
+                pictureBox.Image = images[1];
+            }
+            else if (kinoListik is TVShow)
+            {
+                pictureBox.Image = images[2];
+            }
 
             this.kinoList.RemoveAt(0);
 
