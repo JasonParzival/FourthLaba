@@ -6,17 +6,11 @@ using System.Threading.Tasks;
 
 namespace FourthLaba
 {
-    public enum ProductionTitle { 
-        Wolverine, PussInBoots, Transformers, 
-        Kitchen, DemonSlayer, KorolIShut, 
-        ComedyClub, Minut60, GoodNightChildren 
-    }; //Временное решение
-    public enum MovieTiming { hour2, hour1minut30, hour2minut10 }; //Временное решение
     public class Production
     {
         public static Random rnd = new Random();
 
-        public ProductionTitle Title = ProductionTitle.Wolverine;
+        public string Title = "";
 
         public virtual String GetInfo()
         {
@@ -25,37 +19,10 @@ namespace FourthLaba
         }
     }
 
-    /*
-     public string Verbose()
-        {
-            string typeVerbose = "";
-            switch (this.type)
-            {
-                case MeasureType.bi:
-                    typeVerbose = "(2)";
-                    break;
-                case MeasureType.oc:
-                    typeVerbose = "(8)";
-                    break;
-                case MeasureType.de:
-                    typeVerbose = "(10)";
-                    break;
-                case MeasureType.he:
-                    typeVerbose = "(16)";
-                    break;
-            }
-            return this.value + typeVerbose;
-        }
-     */
-
     public class Movie : Production
     {
-        public MovieTiming Timing = MovieTiming.hour2; // Хронометраж
+        public string Timing = ""; // Хронометраж
         public int AwardCount = 0; // Количество наград
-        public static int[] AwardCounts =
-        {
-            5, 2, 4
-        };
 
         public override String GetInfo()
         {
@@ -66,14 +33,14 @@ namespace FourthLaba
             return str;
         }
 
-        public static Movie Generate()
+        public static Movie Generate(string[] title, string[] timing, int[] count, int random)
         {
-            int chose = rnd.Next(3);
+            int chose = rnd.Next(random);
             return new Movie
             {
-                Title = (ProductionTitle)chose, 
-                Timing = (MovieTiming)chose,
-                AwardCount = AwardCounts[chose]
+                Title = title[chose], 
+                Timing = timing[chose],
+                AwardCount = count[chose]
             };
         }
     }
@@ -82,14 +49,6 @@ namespace FourthLaba
     {
         public int EpisodeCount = 0; // количество серий
         public int SeasonCount = 0; // кол-во сезонов
-        public static int[] EpisodeCounts =
-        {
-            120, 63, 8
-        };
-        public static int[] SeasonCounts =
-        {
-            6, 5, 1
-        };
 
         public override String GetInfo()
         {
@@ -100,26 +59,22 @@ namespace FourthLaba
             return str;
         }
 
-        public static Series Generate()
+        public static Series Generate(string[] title, int[] Ecount, int[] Scount, int random)
         {
-            int chose = rnd.Next(3);
+            int chose = rnd.Next(random);
             return new Series
             {
-                Title = (ProductionTitle)chose + 3, 
-                EpisodeCount = EpisodeCounts[chose],
-                SeasonCount = SeasonCounts[chose]
+                Title = title[chose], 
+                EpisodeCount = Ecount[chose],
+                SeasonCount = Scount[chose]
             };
         }
     }
 
-    public enum TVShowTiming { hour1, hour1minut10, minut20 }; //Временное решение
-    public enum TVShowTime { FR2100, Budni2000, Budni2045 }; //Временное решение
-
-    // Арбуз
     public class TVShow : Production
     {
-        public TVShowTiming TimeCount = TVShowTiming.hour1; // продолжительность
-        public TVShowTime Time = TVShowTime.FR2100; // эфирное время
+        public string TimeCount = ""; // продолжительность
+        public string Time = ""; // эфирное время
 
         public override String GetInfo()
         {
@@ -130,14 +85,14 @@ namespace FourthLaba
             return str;
         }
 
-        public static TVShow Generate()
+        public static TVShow Generate(string[] title, string[] timecount, string[] time, int random)
         {
-            int chose = rnd.Next(3);
+            int chose = rnd.Next(random);
             return new TVShow
             {
-                Title = (ProductionTitle)chose + 6, 
-                TimeCount = (TVShowTiming)chose, 
-                Time = (TVShowTime)chose 
+                Title = title[chose], 
+                TimeCount = timecount[chose], 
+                Time = time[chose]
             };
         }
     }

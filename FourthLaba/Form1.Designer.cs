@@ -32,6 +32,7 @@
             btnGet = new Button();
             txtInfo = new RichTextBox();
             txtOut = new RichTextBox();
+            txtTurnLine = new RichTextBox();
             SuspendLayout();
             // 
             // btnRefill
@@ -72,11 +73,20 @@
             txtOut.TabIndex = 3;
             txtOut.Text = "";
             // 
+            // txtTurnLine
+            // 
+            txtTurnLine.Location = new Point(364, 32);
+            txtTurnLine.Name = "txtTurnLine";
+            txtTurnLine.Size = new Size(279, 254);
+            txtTurnLine.TabIndex = 4;
+            txtTurnLine.Text = "";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(377, 309);
+            ClientSize = new Size(655, 309);
+            Controls.Add(txtTurnLine);
             Controls.Add(txtOut);
             Controls.Add(txtInfo);
             Controls.Add(btnGet);
@@ -92,5 +102,6 @@
         private Button btnGet;
         private RichTextBox txtInfo;
         private RichTextBox txtOut;
+        private RichTextBox txtTurnLine;
     }
 }
