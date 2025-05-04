@@ -25,7 +25,7 @@ namespace FourthLaba
         {
             Image.FromFile("images/Movie.jpg"),
             Image.FromFile("images/Series.jpg"),
-            Image.FromFile("images/TVShow.png")
+            Image.FromFile("images/TVShow.png"),
         };
 
         public Form1()
